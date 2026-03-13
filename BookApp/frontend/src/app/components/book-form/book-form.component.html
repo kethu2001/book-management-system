@@ -1,0 +1,85 @@
+<div class="form-card" [class.edit-mode]="isEditMode">
+  <div class="form-header">
+    <div class="form-icon">{{ isEditMode ? '✏️' : '📚' }}</div>
+    <h2>{{ isEditMode ? 'Edit Book' : 'Add New Book' }}</h2>
+    <p class="form-subtitle">{{ isEditMode ? 'Update the book details below' : 'Fill in the details to add a new book' }}</p>
+  </div>
+
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()" class="book-form">
+    <div class="form-group">
+      <label for="title">Book Title</label>
+      <div class="input-wrapper">
+        <span class="input-icon">📖</span>
+        <input
+          id="title"
+          type="text"
+          formControlName="title"
+          placeholder="Enter book title"
+          [class.invalid]="bookForm.get('title')?.invalid && bookForm.get('title')?.touched"
+        />
+      </div>
+      <span class="error-msg" *ngIf="bookForm.get('title')?.invalid && bookForm.get('title')?.touched">
+        Title is required
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label for="author">Author</label>
+      <div class="input-wrapper">
+        <span class="input-icon">✍️</span>
+        <input
+          id="author"
+          type="text"
+          formControlName="author"
+          placeholder="Enter author name"
+          [class.invalid]="bookForm.get('author')?.invalid && bookForm.get('author')?.touched"
+        />
+      </div>
+      <span class="error-msg" *ngIf="bookForm.get('author')?.invalid && bookForm.get('author')?.touched">
+        Author is required
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label for="isbn">ISBN</label>
+      <div class="input-wrapper">
+        <span class="input-icon">🔢</span>
+        <input
+          id="isbn"
+          type="text"
+          formControlName="isbn"
+          placeholder="e.g. 978-0743273565"
+          [class.invalid]="bookForm.get('isbn')?.invalid && bookForm.get('isbn')?.touched"
+        />
+      </div>
+      <span class="error-msg" *ngIf="bookForm.get('isbn')?.invalid && bookForm.get('isbn')?.touched">
+        ISBN is required
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label for="publicationDate">Publication Date</label>
+      <div class="input-wrapper">
+        <span class="input-icon">📅</span>
+        <input
+          id="publicationDate"
+          type="date"
+          formControlName="publicationDate"
+          [class.invalid]="bookForm.get('publicationDate')?.invalid && bookForm.get('publicationDate')?.touched"
+        />
+      </div>
+      <span class="error-msg" *ngIf="bookForm.get('publicationDate')?.invalid && bookForm.get('publicationDate')?.touched">
+        Publication date is required
+      </span>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn-cancel" (click)="onCancel()" *ngIf="isEditMode">
+        Cancel
+      </button>
+      <button type="submit" class="btn-submit" [disabled]="bookForm.invalid">
+        {{ isEditMode ? 'Update Book' : 'Add Book' }}
+      </button>
+    </div>
+  </form>
+</div>

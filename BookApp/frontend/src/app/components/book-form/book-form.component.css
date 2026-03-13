@@ -1,0 +1,147 @@
+.form-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 30px rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  transition: all 0.3s ease;
+  position: sticky;
+  top: 2rem;
+}
+
+.form-card.edit-mode {
+  border-color: rgba(245, 158, 11, 0.4);
+  box-shadow: 0 4px 30px rgba(245, 158, 11, 0.15);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.form-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: #1e1b4b;
+  margin: 0 0 0.3rem;
+}
+
+.form-subtitle {
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 0.8rem;
+  font-size: 1rem;
+  z-index: 1;
+}
+
+input {
+  width: 100%;
+  padding: 0.7rem 0.8rem 0.7rem 2.5rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-family: 'Lato', sans-serif;
+  color: #1f2937;
+  background: #f9fafb;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+  border-color: #6366f1;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+input.invalid {
+  border-color: #ef4444;
+  background: #fff5f5;
+}
+
+.error-msg {
+  display: block;
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: 0.3rem;
+  padding-left: 0.3rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.btn-submit {
+  flex: 1;
+  padding: 0.8rem;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  letter-spacing: 0.03em;
+}
+
+.btn-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-cancel {
+  padding: 0.8rem 1.2rem;
+  background: #f3f4f6;
+  color: #6b7280;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-cancel:hover {
+  background: #e5e7eb;
+  color: #374151;
+}

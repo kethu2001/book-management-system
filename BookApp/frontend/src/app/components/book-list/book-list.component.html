@@ -1,0 +1,77 @@
+<div class="list-container">
+
+  <!-- Toast Notifications -->
+  <div class="toast success" *ngIf="successMessage">
+    <span>✅</span> {{ successMessage }}
+  </div>
+  <div class="toast error" *ngIf="errorMessage">
+    <span>❌</span> {{ errorMessage }}
+  </div>
+
+  <!-- Header -->
+  <div class="list-header">
+    <div class="header-left">
+      <h2>Book Collection</h2>
+      <span class="book-count">{{ filteredBooks.length }} {{ filteredBooks.length === 1 ? 'book' : 'books' }}</span>
+    </div>
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        (input)="onSearch()"
+        placeholder="Search by title, author, ISBN..."
+      />
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div class="loading-state" *ngIf="isLoading">
+    <div class="spinner"></div>
+    <p>Loading your books...</p>
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="!isLoading && filteredBooks.length === 0">
+    <div class="empty-icon">📭</div>
+    <h3>No books found</h3>
+    <p *ngIf="searchQuery">Try a different search term</p>
+    <p *ngIf="!searchQuery">Add your first book using the form!</p>
+  </div>
+
+  <!-- Books Grid -->
+  <div class="books-grid" *ngIf="!isLoading && filteredBooks.length > 0">
+    <div class="book-card" *ngFor="let book of filteredBooks; let i = index"
+         [style.animation-delay]="i * 0.05 + 's'">
+
+      <!-- Delete Confirm Overlay -->
+      <div class="delete-confirm" *ngIf="deleteConfirmId === book.id">
+        <p>Delete <strong>"{{ book.title }}"</strong>?</p>
+        <div class="confirm-actions">
+          <button class="btn-confirm-delete" (click)="onDelete(book.id!)">Yes, Delete</button>
+          <button class="btn-cancel-delete" (click)="cancelDelete()">Cancel</button>
+        </div>
+      </div>
+
+      <div class="book-spine"></div>
+      <div class="book-content">
+        <div class="book-meta-top">
+          <span class="book-badge">ISBN: {{ book.isbn }}</span>
+        </div>
+        <h3 class="book-title">{{ book.title }}</h3>
+        <p class="book-author">by {{ book.author }}</p>
+        <p class="book-date">📅 {{ formatDate(book.publicationDate) }}</p>
+
+        <div class="book-actions">
+          <button class="btn-edit" (click)="onEdit(book)">
+            ✏️ Edit
+          </button>
+          <button class="btn-delete" (click)="confirmDelete(book.id!)">
+            🗑️ Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
