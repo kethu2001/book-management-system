@@ -147,8 +147,6 @@ Open the app in your browser:
 http://localhost:4200
 ```
 
-> ⚠️ **Both terminals must be running at the same time** for the app to work correctly.
-
 ---
 
 ## 📌 API Endpoints
@@ -183,12 +181,10 @@ Base URL: `http://localhost:5000/api`
 
 - Data is stored **in-memory** — it will reset when the backend server restarts
 - CORS is configured to allow requests from `http://localhost:4200`
-- The frontend API URL is configured in `src/environments/environment.ts`
 
 ---
 
 ## 👨‍💻 Author
 
-Built as part of the **Enhanzer Intern / Trainee Software Engineer Assignment**
+Built as part of the **Enhanzer Trainee / Associate Software Engineer Assignment**
 
----
